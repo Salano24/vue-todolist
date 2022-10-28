@@ -13,52 +13,41 @@ Bonus:
 1- oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il todo alla lista
 2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa)
 */
-
-const {
-  createApp 
-} = Vue
+const { createApp } = Vue
 
 createApp({
-  data(){
-      return{
-       newTask: '',
-       error: false,
-       tasks:  [
-          {
-            text: 'Learn HTML',
-            done: false
-          },
-          {
-            text: 'Learn CSS',
-            done: false
-          },
-          {
-            text: 'Learn JS',
-            done: false
-          },
-        ]
-      }
+  data() {
+    return {
+        newTask: "",
+        tasks: [
+          {text: "Learn HTML",
+          done: false},
+          {text: "Learn CSS",
+          done: false},
+          {text: "Learn JS",
+          done: false},
+        ],
+
+        error: false,
+    }
   },
   methods: {
-      addTask(){
-       if(this.newTask.length < 5){
-         this.error = true
-       }else {
-           this.error = false
-          this.tasks.unshift(this.newTask)
-          this.newTask = ''
-       }
-      },
-      remove(index){
-       this.tasks.splice(index, 1)
-      },
-      done(){
-        console.log('done');
-
-      }
-      }
+    createTask() {
+        if(this.newTask.length >=5){
+        this.tasks.unshift({text:this.newTask, done:false})
+        this.newTask = ""
+        this.error = false
+        } else {
+            this.error = true
+        }
+    },
+    done(i){
+        this.tasks[i].done = !this.tasks[i].done
+    },
+    remove(index){
+      this.tasks.splice(index, 1)
+     }
   }
 
-  
-).mount('#app')
+}).mount('#app')
 

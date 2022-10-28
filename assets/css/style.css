@@ -1,4 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: orange;
+}
+
+.barred{
+    text-decoration: line-through;
+}
+
 li{
     width: 15vw;
+    display: flex;
     justify-content: space-between;
+    font-weight: bolder;
+}
+
+.istruzioni{
+    display: block;
+    height: 30vh;
+    text-align: center;
+    background-color: bisque;
+    padding-top: 5vh;
+}
+
+#app{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul, button, h2{
+    margin-top: 10vh;
 }
