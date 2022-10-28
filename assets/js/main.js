@@ -14,13 +14,51 @@ Bonus:
 2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa)
 */
 
-import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+const {
+  createApp 
+} = Vue
 
 createApp({
-  data() {
-    return {
-      message: 'Hello Vue!'
-    }
+  data(){
+      return{
+       newTask: '',
+       error: false,
+       tasks:  [
+          {
+            text: 'Learn HTML',
+            done: false
+          },
+          {
+            text: 'Learn CSS',
+            done: false
+          },
+          {
+            text: 'Learn JS',
+            done: false
+          },
+        ]
+      }
+  },
+  methods: {
+      addTask(){
+       if(this.newTask.length < 5){
+         this.error = true
+       }else {
+           this.error = false
+          this.tasks.unshift(this.newTask)
+          this.newTask = ''
+       }
+      },
+      remove(index){
+       this.tasks.splice(index, 1)
+      },
+      done(){
+        console.log('done');
+
+      }
+      }
   }
-}).mount('#app')
+
+  
+).mount('#app')
 
